@@ -5,12 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Weather</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1 id="main-title">Hello World</h1>
-    <!-- I want to have a card to display the weather in New Orleans -->
-
+    <div class="container">
+        <h1 id="main-title">New Orleans Weather</h1>
+        <!-- I want to have a card to display the weather in New Orleans -->
+        <div class="card">
+            <p class="card-text"> 
+                Temperature: <span id="temp">LOADING...</span>
+            </p>
+        </div>
+    </div>
     <script src="helpers.js"></script>
     <script src="script.js"></script>
 </body>
