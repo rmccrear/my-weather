@@ -42,3 +42,5 @@ console.log(newOrleansTemp);
 // put the data on the page.
 setText("temp", newOrleansTemp);
 
+// var temperatureElement = document.getElementById("temp");
+// temperatureElement.textContent = newOrleansTemp;
