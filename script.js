@@ -28,19 +28,31 @@ var newOrleansWeather = {
     }
 };
 
-// Use console log to check that we have a good understanding of the data object.
-console.log(newOrleansWeather);
-console.log("NO Lat: " + newOrleansWeather.latitude);
-console.log("NO Lon: " + newOrleansWeather.longitude);
-console.log("NO temp: " + newOrleansWeather.current.temperature_2m);
+// This function will update the page with the data.
+function updateWeatherCard() {
+    console.log("hello from update weather card function");
+    setText("temp", newOrleansWeather.current.temperature_2m);
+}
+// updateWeatherCard();
 
-var newOrleansTemp = newOrleansWeather.current.temperature_2m;
+function fetchNewOrleansWeather() {
+    console.log("hello from fetchNewOrleansWeather");
+    const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+    };
 
-console.log(newOrleansTemp);
+    fetch("https://api.open-meteo.com/v1/forecast?latitude=29.95653&longitude=-90.07374&current=temperature_2m,is_day&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch", requestOptions)
+        // .then((response) => response.text())
+        // .then((result) => console.log(result))
+        .then((response) => response.json())
+        .then(function (result) {
+            console.log(result);
+            setText("temp", result.current.temperature_2m);
+        })
+        .catch((error) => console.error(error));
 
+}
 
-// put the data on the page.
-setText("temp", newOrleansTemp);
-
-// var temperatureElement = document.getElementById("temp");
-// temperatureElement.textContent = newOrleansTemp;
+// This will kick of the network call.
+fetchNewOrleansWeather();
